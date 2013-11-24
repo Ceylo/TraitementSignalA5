@@ -12,7 +12,7 @@ N = 65 ;
 M = 17 ;
 offset = -8 ;
 p = zeros(1,N) ;
-n0 = ceil((N-M)/2) ;
+n0 = ceil((N-M)/2 + 1) ;
 n1 = n0+M-1 ;
 xn = 1-n0+offset:N-n0+offset ;
 p(n0:n1) = 1 ;
@@ -22,7 +22,7 @@ set (fig, 'markersize', 5) ;
 text = sprintf ('Porte unitaire de largeur %d', M) ;
 my_title (text) ;
 set_ymax (p) ;
-xlim([-32;32]);
+xlim([-35;35]);
 
 [P f] = TFD(p, f0, N, xn(1)) ;              % f : fréquence réduite
 
