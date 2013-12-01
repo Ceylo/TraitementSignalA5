@@ -24,7 +24,7 @@ my_title (text) ;
 set_ymax (p) ;
 xlim([-35;35]);
 
-[P f] = TFD(p, f0, N, xn(1)) ;              % f : fréquence réduite
+[P f] = TFD(p, f0, 2*N, xn(1)) ;              % f : fréquence réduite
 
 input ('Figure suivante ? ') ;
 
