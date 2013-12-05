@@ -63,6 +63,21 @@ compo_fe = 8000 ;		        % Fréquence déchantillonnage
 compo_Te = 1/compo_fe ;
 compo_t = 0:compo_Te:1 ;
 
-compo_x = 0.2*sin(2*pi*800*t); % sinusoide à 800 Hz
+compo_x = 0.2*sin(2*pi*800*compo_t); % sinusoide à 800 Hz
 compo_x = compo_x.+0.2*sin(2*pi*1400*compo_t); % sinusoide à 1400 Hz
 
+plot(compo_t, compo_x) ;
+my_title ('Signal initial', 13) ;
+my_xlabel ('Temps (s)') ;
+set_ylim (compo_x) ;
+xlim([0 0.1]);
+
+
+% Application de notre filtre
+input("Figure suivante ? ");
+filtered = compo_x .* H; % ça n'a pas l'air d'être ça T_T
+
+plot(compo_t, filtered) ;
+my_title ('Signal filtre', 13) ;
+my_xlabel ('Temps (s)') ;
+set_ylim (filtered) ;
