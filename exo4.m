@@ -63,6 +63,6 @@ compo_fe = 8000 ;		        % Fréquence déchantillonnage
 compo_Te = 1/compo_fe ;
 compo_t = 0:compo_Te:1 ;
 
-compo_x = 0.2*sin(2*pi*800*t);
-compo_x = compo_x.+0.2*sin(2*pi*1400*compo_t); 
+compo_x = 0.2*sin(2*pi*800*t); % sinusoide à 800 Hz
+compo_x = compo_x.+0.2*sin(2*pi*1400*compo_t); % sinusoide à 1400 Hz
 
