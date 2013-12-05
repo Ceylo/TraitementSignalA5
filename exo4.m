@@ -1,3 +1,18 @@
+% 
+% w1 < w2 (passe bas)
+% w1 > w2 (passe haut)
+% w1 : bord de début de passe bande = 1 kHz
+% w2 : bord de début de coupe bande = 1,2 kHz
+% db1 : nombre de dB d’ondulation acceptables dans le filtre passe bande = 1 dB
+% db2 : attenuation minimum en dB du filtre coupe bande = 40 dB
+% 
+% 
+% butterworth:
+% [n, wn] = buttord(w1, w2, dB1, dB2)  (doit etre normalisé sur fe/2, notamment w1 et w2)
+% [B, A] = butter(n, wn) // filtre passe bas coupé à PI x Wc radians
+% y = filter(B, A, s)
+% 
+
 clear;
 clf;
 
@@ -12,26 +27,9 @@ db2 = 40;
 
 [H, w] = freqz(B,A) ;                   % w : pulsation entre 0 et pi
 nu = w/(2*pi) ;                         % Frequence reduite
-f = nu*fe ;                             % Frequence
 
-plot(nu,abs(H)) ;
-set_ymax(abs(H)) ;
-my_title("Diagramme de gain", 13) ;
-my_xlabel("Frequence reduite") ;
-
-input ("Figure suivante ? ") ;
 plot(nu,20*log10(abs(H))) ;
 my_title("Diagramme de gain en dB", 13) ;
-my_xlabel("Frequence reduite") ;
-
-input ("Figure suivante ? ") ;
-plot(nu,angle(H)) ;
-my_title("Diagramme de phase (en radians)",13) ;
-my_xlabel("Frequence reduite") ;
-
-input ("Figure suivante ? ") ;
-plot(nu,angle(H)*180/pi) ;
-my_title("Diagramme de phase (en degres)",13) ;
 my_xlabel("Frequence reduite") ;
 
 % Visualisation des zeros et des poles de la fonction de transfert en z
