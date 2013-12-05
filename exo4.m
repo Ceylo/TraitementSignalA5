@@ -57,3 +57,12 @@ set_ylim(h) ;
 set (h_obj, 'markersize', 5) ;
 my_title("Reponse impulsionnelle", 13) ;
 
+
+% Q2: génération du signal composé de la somme de deux sinusoïdes à 800 Hz et 1.4 kHz, échantillonné à 8kHz.
+compo_fe = 8000 ;		        % Fréquence déchantillonnage
+compo_Te = 1/compo_fe ;
+compo_t = 0:compo_Te:1 ;
+
+compo_x = 0.2*sin(2*pi*800*t);
+compo_x = compo_x.+0.2*sin(2*pi*1400*compo_t); 
+
