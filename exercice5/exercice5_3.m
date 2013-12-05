@@ -1,10 +1,5 @@
-% Etude d'un filtre défini par son équation aux différences :
-
-%  N                   M
-% sum a(k+1) s(n-k) = sum b(k+1) e(n-k)
-% k=0                 k=0
-
-% ou par sa fonction de transfert en z :
+% HAUDEGAND & SOLTIC
+% Etude d'un filtre défini par sa fonction de transfert en z :
 
 %          M
 %         sum b(k+1) z^-k
@@ -17,12 +12,6 @@
 % Ici définition du filtre par sa fonction de transfert en z
 % A : coefficients du dénominateur (premier terme -> degré 0)
 % B : coefficients du numérateur (premier terme -> degré 0)
-
-% Dans cet exemple :
-
-%            2 * z^-1
-% H(z) = -----------------
-%            2 - z^-1
 
 clear
 clf
@@ -63,7 +52,7 @@ zplane(B, A) ;
 set (findobj (gcf, '-property', 'markersize'), 'markersize', 7) ;
 my_title("Zéros (o) et pôles (x)", 13) ;
 
-% Réponse impulsionnelle (il est également possible d'utiliser impz)
+% Réponse impulsionnelle
 
 N = 64 ;
 n0 = N/2 ;
