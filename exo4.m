@@ -26,11 +26,10 @@ db2 = 40;
 [B, A] = butter(n, wn);
 
 [H, w] = freqz(B,A, 512, 8000) ;                   % w : pulsation entre 0 et pi
-%nu = w/(2*pi) ;                         % Frequence reduite
 
 plot(w,20*log10(abs(H))) ;
 my_title("Diagramme de gain en dB", 13) ;
-my_xlabel("Frequence reduite") ;
+my_xlabel("Frequence (Hz)") ;
 
 % Visualisation des zeros et des poles de la fonction de transfert en z
 
