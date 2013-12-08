@@ -72,12 +72,35 @@ my_xlabel ('Temps (s)') ;
 set_ylim (compo_x) ;
 xlim([0 0.1]);
 
+% Spectre de fréquence du son généré
+[P f] = TFD(compo_x, fe) ;              % f : fréquence réduite
+
+input ('Figure suivante ? ') ;
+
+fig = plot (f, abs(P)) ;
+set_ymax (abs(P)) ;
+xlim([0 2000]);
+my_xlabel ('Frequence (Hz)') ;
+my_title ("Spectre du signal compose'") ;
+
 
 % Application de notre filtre
-input("Figure suivante ? ");
-filtered = compo_x .* H; % ça n'a pas l'air d'être ça T_T
+filtered = filter(B, A, compo_x);
 
+input("Figure suivante ? ");
 plot(compo_t, filtered) ;
 my_title ('Signal filtre', 13) ;
 my_xlabel ('Temps (s)') ;
 set_ylim (filtered) ;
+xlim([0 0.1]);
+
+% Spectre de fréquence du son filtré
+[P f] = TFD(filtered, fe) ;              % f : fréquence réduite
+
+input ('Figure suivante ? ') ;
+
+fig = plot (f, abs(P)) ;
+set_ymax (abs(P)) ;
+xlim([0 2000]);
+my_xlabel ('Frequence (Hz)') ;
+my_title ("Spectre du son filtre'") ;
